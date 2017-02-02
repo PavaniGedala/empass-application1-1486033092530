@@ -1,0 +1,20 @@
+{
+    
+    "22923616767237": {
+                "org": "qs8a6b"
+                , "id": "employee-1"
+                , "domain": "internetofthings.ibmcloud.com"
+                , "type": "employee-1"
+                , "auth-method": "token"
+                , "auth-token": "empass-iot-devices"
+          },
+   "646398245": {
+                "org": "qs8a6b"
+                , "id": "employee-2"
+                , "domain": "internetofthings.ibmcloud.com"
+                , "type": "employee-2"
+                , "auth-method": "token"
+                , "auth-token": "3Yjx5uCwyMw72G(v)L"
+          }
+
+}

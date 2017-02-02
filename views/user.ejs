@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EMPASS</title>
+		
+		<!-- Boostrap files -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="bootstrap/js/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- FontAwesome files -->
+    <link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.min.css">
+
+    <!-- Custom styles file -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- Handlebars file -->
+    <script type="text/javascript" src="js/handlebars.js"></script>
+    
+    <style type="text/css">
+      
+    td{
+        font-family: sans-serif;
+    }
+    a{
+        font-family: sans-serif;
+    }
+    .navbar{
+      background-color: #232527;
+      color: #232527;
+    }
+    </style>
+	</head>
+	<body>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" style="padding-top: 4px;">        
+          <img src="images/MSS.png" style="height: 45px;">
+        </a>&nbsp;         
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" style="color: #ffffff; font-family: sans-serif;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empass <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>  
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="container-fluid main-page">
+    <!-- BreadCrumb Style for Bus Status Starts -->
+    <ol class="breadcrumb">
+      <li><a href="#">User</a></li>
+      <li><a href="#">Bus Status</a></li>
+    </ol>
+    <!-- BreadCrumb Style for Bus Status Ends -->
+    
+    <!-- Bus Status Style Starts -->
+    <div class="bus-status-details container-fluid">
+      <table class="table text-center">
+        <!-- Bus status header starts -->
+        <thead class="bus-table-header">
+          <tr>
+            <td>
+              <span class="fa fa-bus"></span>
+              Bus No.
+            </td>
+            <td>
+              <span class="fa fa-arrow-up"></span>
+              Starts at
+            </td>
+            <td>
+              <span class="fa fa-arrow-down"></span>
+              Ends at
+            </td>
+            <td>
+              <span class="fa fa-map-marker"></span>
+              Current Location
+            </td>
+            <td>
+              <span class="fa fa-user"></span>
+              Seats Available
+            </td>
+          </tr>
+        </thead>
+        <!-- Bus status header ends -->
+
+        <!-- Bus status body starts -->
+        <tbody>
+          <tr class="bus-active" id="current-bus">
+            <td>586</td>
+            <td>Miracle Heights</td>
+            <td>Miracle City</td>
+            <td id="bus1-current-location">GITAM University</td>
+            <td id="bus1-availability">*</td>
+          </tr>
+        </tbody>
+        <!-- Bus status body ends -->
+      </table>
+    </div>
+    <!-- Bus Status table ends here -->
+
+    <!-- Employee Travel Details table starts here -->    
+    <div id="travel-desk">
+      <!-- BreadCrumb Style for Bus Status Starts -->
+      <ol class="breadcrumb">          
+        <li>
+          <form class="navbar-form navbar-left" name="empTravelSearch">
+            <label>Search My Travel Records</label>
+            <div class="form-group">
+              <input type="hidden" id="search_emp_id" class="form-control" placeholder="employee ID here..."/>
+              <select class="form-control" id="search_timerange">
+                <option id="day-option" value="">Today</option>
+                <option id="month-option" value="">This Month</option>
+                <option id="year-option" value="">This Year</option>
+                <!-- <option id="">All Time</option> -->
+              </select>
+            </div>
+            <button type="button" class="btn btn-default" onclick="submitSearchForm(this);">Submit</button>
+          </form>
+        </li>
+      </ol>
+      <!-- BreadCrumb Style for Bus Status Ends -->
+      <div class="employee-travel-details text-center" id="employee-travel-details">
+      </div>      
+    </div>
+    <!-- Employee Travel Details table ends here -->
+  </div>
+
+  <!-- Employee Travel Details Table Template -->
+  <script type="text/x-handlebars-template" id="employee-travel-details-template">
+    <table class="table">
+      <!-- Employee Travel Details Table Header starts here -->
+      <thead class="employee-travel-table-header">
+        <tr>
+          <td>
+            <span class="fa fa-address-card"></span> Emp. ID
+          </td>
+          <td>
+            <span class="fa fa-bus"></span> Bus No.
+          </td>
+          <td>
+            <span class="fa fa-arrow-up"></span> 
+            <span class="fa fa-clock-o"></span> Boarded Time
+          </td>
+          <td>
+            <span class="fa fa-arrow-down"></span>  
+            <span class="fa fa-clock-o"></span> Departure Time
+          </td>
+          <td>
+            <span class="fa fa-arrow-up"></span>  
+            <span class="fa fa-map-marker"></span> Boarding Place
+          </td>
+          <td>
+            <span class="fa fa-arrow-down"></span>  
+            <span class="fa fa-map-marker"></span> Departure Place
+          </td>
+        </tr>
+      </thead>
+      <!-- Employee Travel Details Table Header ends here -->
+    
+      <!-- Employee Travel Details Table Body here -->
+      <tbody>
+        {{#each docs}}
+        <tr>
+          <td id="emp-travel-id">{{e_id}} </td>
+          <td id="emp-bus-num">{{b_id}} </td>
+          <td id="emp-travel-board-time">{{printDateTime board_timestamp}} </td>
+          <td id="emp-travel-depart-time">{{printDateTime depart_timestamp}}</td>
+          <td id="emp-travel-board-location"> {{reverseGeocode board_location}} </td>
+          <td id="emp-travel-depart-location"> {{reverseGeocode depart_location}} </td>
+        </tr>
+        {{/each}}
+      </tbody>
+      <!-- Employee Travel Details Table Body ends here -->
+    </table>
+  </script>
+  <script type="text/javascript" src="js/user-main.js"></script>
+  <script type="text/javascript">
+
+      var emp_id = <%= card_num %>;
+      var b_id   = "<%- b_id %>";
+      var start_time = document.getElementById('day-option').value;
+      start_time=start_time.replace('D','');
+      // console.log(start_time);
+      var time_add = 0;
+      document.getElementById('search_emp_id').value = emp_id.toString();
+      getEmpTravelDetails(start_time,time_add,emp_id);
+
+    </script>
+	</body>
+</html>

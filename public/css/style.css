@@ -1,0 +1,17 @@
+.bus-table-header,.employee-travel-table-header
+{
+	background-color: #f2f2f2;
+	font-weight: bolder;
+}
+.bus-active
+{
+	/*background-color: green;*/
+	color:green;
+	font-weight: bolder;
+}
+.bus-inactive
+{
+	/*background-color: red;*/
+	color:red;
+	font-weight: bolder;
+}
