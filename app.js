@@ -25,7 +25,7 @@ var http = require('http'),
 // coudant credentials
 var cloudant_user = "f1e0f979-add5-43b0-938c-bbbf0d1df907-bluemix";
 var cloudant_pwd  = "417a901232b4dfda37594e720d458eb126a9bd8dc1045c28f8105ae9e8cde540";
-var cloudant      = Cloudant({account:cloudant_user, password:cloudant_pwd})
+//var cloudant      = Cloudant({account:cloudant_user, password:cloudant_pwd})
 // define cloudant databases with objects
 var employee_db   = cloudant.db.use('employee');
 var passengers_db = cloudant.db.use('passengers');
